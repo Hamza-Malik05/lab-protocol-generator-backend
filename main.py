@@ -11,6 +11,26 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+app = FastAPI()
+
+origins = [
+    "https://lab-protocol-generator.vercel.app",  # ⬅️ Your live Vercel frontend
+                                                 # (Standard Vite port, just in case)
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Your first API endpoint
+@app.get("/")
+def read_root():
+    return {"message": "Backend is connected!"}
+
 import os
 
 
