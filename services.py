@@ -199,11 +199,6 @@ def invoke_bedrock_json(
         },
     )
     raw_text = extract_text_from_bedrock_response(response)
-
-    # ADD THESE THREE LINES:
-    print("\n--- CLAUDE'S RAW OUTPUT ---")
-    print(raw_text)
-    print("---------------------------\n")
     
     try:
         return parse_json_with_repair(raw_text)

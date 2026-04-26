@@ -92,14 +92,27 @@ Tavily Results:
 @app.post("/api/generate-plan")
 def generate_plan(payload: HypothesisRequest) -> Dict[str, Any]:
     tavily_results = tavily_search(
-        query=f"Reagents, catalog numbers, protocol references for: {payload.hypothesis}",
+        query=f"Reagents, catalog numbers, pricing, and validation protocols for: {payload.hypothesis}",
         include_domains=[
+            # The Giants
             "thermofisher.com",
             "sigmaaldrich.com",
-            "promega.com",
+            "vwr.com",
+            "fishersci.com",
+            
+            # The Specialists
+            "atcc.org",
+            "abcam.com",
+            "neb.com",
+            "qiagen.com",
+            "biolegend.com",
+            
+            # QA, Protocols, and Validation
+            "citeab.com",
+            "biocompare.com",
             "protocols.io",
         ],
-        max_results=5,
+        max_results=8,
     )
 
     expert_context = get_semantic_expert_knowledge(payload.hypothesis, payload.domain)
