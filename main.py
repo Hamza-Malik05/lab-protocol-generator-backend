@@ -19,7 +19,7 @@ from services import (
 app = FastAPI(title="The AI Scientist API", version="1.0.0")
 
 origins = [
-    "https://lab-protocol-generator.vercel.app",
+    "https://lab-protocol-generator.vercel.app","http:://localhost:8080"
 ]
 
 app.add_middleware(
