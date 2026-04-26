@@ -4,3 +4,4 @@ pydantic
 python-dotenv
 requests
 boto3
+pinecone
